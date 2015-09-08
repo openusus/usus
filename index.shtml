@@ -1,0 +1,74 @@
+<html>
+
+<head>
+  <title><!--#exec cmd='
+BASEDIR=`dirname ${SCRIPT_FILENAME}`
+BINDIR=bin
+$BASEDIR/$BINDIR/version.py -v
+'--></title>
+  <meta content="">
+  <style></style>
+</head>
+  
+
+<body>
+
+<!-- Print the HEAD -->
+<h1>
+<!--#exec cmd='
+BASEDIR=`dirname ${SCRIPT_FILENAME}`
+BINDIR=bin
+$BASEDIR/$BINDIR/version.py -v
+'--></h1>
+    
+<table>
+  <tbody>
+    <tr>
+      <th width="80%">&nbsp;<th>
+      <th width="20%"><a href="bin/register.py">Register New...</a></th>
+    </tr>  
+  </tbody>
+</table>
+
+<hr>
+
+<!--#exec cmd='
+BASEDIR=`dirname ${SCRIPT_FILENAME}`
+
+BINDIR=bin
+# ls $BASEDIR
+# echo "<hr>"
+# ls $BASEDIR/$BINDIR
+
+$BASEDIR/$BINDIR/buildtable.py
+'-->
+<hr />
+
+<pre>
+<!-- <remove this and leading space>#exec cmd='
+BASEDIR=`dirname ${SCRIPT_FILENAME}`
+DATADIRNAME=data
+BINDIR=bin
+
+# . $BASEDIR/$BINDIR/register.new.sh
+
+DATADIR=$BASEDIR/$DATADIRNAME
+echo $DATADIR 
+# REQUEST_URI=/~mpahnke/projects/OpenText/u7n/
+BASE_URI=`dirname ${REQUEST_URI}`
+
+DATADIRLIST=`ls $DATADIR`
+echo $DATADIRLIST
+for datalistentry in $DATADIRLIST; do 
+  
+  url="$BASE_URI/$DATADIRNAME/$datalistentry"
+  echo "<a href=\"$url\">$datalistentry</a>"
+done
+# env
+'-->
+</pre>    
+    
+</body>
+
+
+</html>
