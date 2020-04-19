@@ -1,0 +1,868 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>OpenText 'U7N' - UpdateMan TODO $Revision$</title>
+    <style type="text/css">
+td#highest{color: black; background-color: red;vertical-align: middle ;font-weight: bold;text-align:center;}
+td#high {color: black; background-color: yellow;vertical-align: middle ;font-weight: bold;text-align:center;}
+td#medium{color: white; background-color: blue;vertical-align: middle ;font-weight: bold;text-align:center;}
+td#low{color: black; background-color: lightgreen;vertical-align: middle ;font-weight: normal;text-align:center;}
+td#lowest{color: white; background-color: darkgreen;vertical-align: middle ;font-weight: lighter;text-align:center;}
+td#open{color: black; background-color: red;vertical-align: middle ;font-weight: bold;text-align:center;}
+td#known {color: black; background-color: yellow;vertical-align: middle ;font-weight: bold;text-align:center;}
+td#work{color: white; background-color: blue;vertical-align: middle ;font-weight: normal;text-align:center;}
+td#test{color: black; background-color: lightgreen;vertical-align: middle ;font-weight: normal;text-align:center;}
+td#finished{color: white; background-color: darkgreen;vertical-align: middle ;font-weight: lighter;text-align:center;}
+td#regular{color: black; background-color: white;vertical-align: middle ;font-weight: normal;}
+td#regular1{color: black; background-color: lightgray;vertical-align: middle ;font-weight: normal;}
+td#version{color: black; background-color: white;vertical-align: middle ;font-weight: bold;text-align:center;}
+td#done{color: darkgray; background-color: lightgray; vertical-align: middle; font-weight: lighter; text-align:center;}
+td#none{color: gray; background-color: white; text-align: center; font-weight: lighter; }
+  </style>
+  </head>
+  <body>
+    <h1>openLSUS 'LSUS' - UpdateManager TODO $Revision$</h1>
+    $Id$ / <a href="#"><s>History of this Document...</s></a><br>
+    <h2>Legend</h2>
+    <table width="100%">
+      <tbody>
+        <tr>
+          <th colspan="5">Priority</th>
+        </tr>
+        <tr>
+          <td id="highest" width="20%"> Highest</td>
+          <td id="high" width="20%"> High</td>
+          <td id="medium" width="20%">Medium</td>
+          <td id="low" width="20%">Low</td>
+          <td id="lowest" width="20%">Lowest</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="width: 100%;">
+      <tbody>
+        <tr>
+          <th colspan="5">Status</th>
+        </tr>
+        <tr>
+          <td id="open" width="20%"><span style="font-weight: bold;">open</span>/TestFatal</td>
+          <td id="known" style="width: 20%;">Analyzed/<span
+              style="font-weight: bold;">known</span> what to
+            do/TestReturn</td>
+          <td id="work" width="20%">In <span style="font-weight: bold;">work</span>/Progress</td>
+          <td id="test" width="20%">To <span style="font-weight: bold;">test</span>/Completed</td>
+          <td id="finished" width="20%">Completely <span
+              style="font-weight: bold;">finished</span>/Stable</td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;" id="none">none<br>
+          </td>
+          <td style="vertical-align: top;" id="done">done<br>
+          </td>
+          <td style="vertical-align: top;" id="version">VERSION<br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+          <td style="vertical-align: top;"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <table style="width: 100%;" border="1">
+      <tbody>
+        <tr>
+          <th colspan="6" style="color: white;" bgcolor="gray">BUGS</th>
+        </tr>
+        <tr>
+          <th title="Status" width="3%">Stat</th>
+          <th title="UID $date.number" width="8%">Date.No</th>
+          <th title="Short Name" width="20%">Name</th>
+          <th title="Detailed Description" width="60%">Description</th>
+          <th title="VersionPlaned" id="version" width="4%">Planned</th>
+          <th title="Priority" width="5%">Prio</th>
+        </tr>
+        <tr>
+          <td id="none" style="width: 3%;">template/<span
+              style="font-weight: bold;">done</span></td>
+          <td width="8%">$date.no</td>
+          <td width="20%">name</td>
+          <td width="60%">description</td>
+          <th title="VersionPlaned" id="version" width="4%">[1.xx]</th>
+          <td id="none" style="width: 5%;">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/09/04.1</td>
+          <td width="20%">apt-show-version-diff</td>
+          <td width="60%">Handle apt-show-version different output (swap
+            version and status in precise pangolin)</td>
+          <td title="VersionPlaned" id="version" width="4%">0.1+</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test<br>
+          </td>
+          <td width="8%">2016/05/23.1</td>
+          <td width="20%">dump/reload csv losts last update data.</td>
+          <td width="60%">Even the last update date should be
+            ex-/imported. </td>
+          <td title="VersionPlaned" id="version" width="4%">0.4+</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/08/05.1</td>
+          <td width="20%">LastChecked Field Not Updated</td>
+          <td width="60%">The "LastChecked" Field is not updated in the
+            database, if a check for updates was done. This was because
+            of a blocking process (I set the timeout from endless to
+            3hours now) and an exception which breaks the entire loop
+            over all hosts, on which the remaining systems were still
+            untouched.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.7</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/09/08.1</td>
+          <td width="20%">cron job crashes if one debian ssh connection
+            key changed </td>
+          <td width="60%">This comes from the pssh
+            getAptShowVersionsVersion() which returns [] with wrong
+            ssh-key, which cannot parsed correctly</td>
+          <td title="VersionPlaned" id="version" width="4%">0.8</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/09/08.2</td>
+          <td width="20%">Yum check-updates return value not handled
+            correctly by pssh - inform Upstream!?</td>
+          <td width="60%">RedHat yum check-updates returns 100 if there
+            are updates, which isn't handled correctly in pssh, which
+            assumes 100 as Error.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.8</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/09/12.1</td>
+          <td width="20%">Yum Updates count not complete updated</td>
+          <td width="60%">Used the wrong query (takes all enabled and
+            autoupdate on. -&gt; need to check just enabled).</td>
+          <td title="VersionPlaned" id="version" width="4%">0.8</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/09/12.2</td>
+          <td width="20%">Yum Update Pack Infos not inserted</td>
+          <td width="60%">Use getRedHatPacks now also in PSSH version,
+            which prevents the exception which occurs if you try to
+            'parse' and insert yum's headlines, like 'loading
+            plugins...'.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.8</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/09/13.1</td>
+          <td width="20%">Zypper Pack Infos not inserted</td>
+          <td width="60%"> Index out of bounds execption </td>
+          <td title="VersionPlaned" id="version" width="4%">0.8</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/12/08.1</td>
+          <td width="20%">OpenSSH Server Dependency on SUSE failed</td>
+          <td width="60%"> On SuSE and on RedHat the Server and Client
+            is included in the "<b>openssh</b>" package. Fixed in Pack
+            version 0.3</td>
+          <td title="VersionPlaned" id="version" width="4%">0.9</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/12/08.2</td>
+          <td width="20%">Registration failed on non-pingable systems
+            without error message!</td>
+          <td width="60%"> Used the wrong getPingresult function for the
+            input.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.9</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2017/04/27.1</td>
+          <td width="20%">Self registering sudo setup for lsus user
+            failed in old RedHat and older sudo </td>
+          <td width="60%">Visudo was not in (/bin) $PATH but in /sbin
+            and therefore could not create sudoers.d/file. <b>Fixed in
+              Pack version 0.4</b></td>
+          <td title="VersionPlaned" id="version" width="4%">0.9</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2017/05/31.1</td>
+          <td width="20%">AD Login is sometimes not an valid
+            Email-Address</td>
+          <td width="60%">To send the self-registering email to a valid
+            mailbox, the AD LDAP connector should be ask for the SMTP
+            Address for the users current login</td>
+          <td title="VersionPlaned" id="version" width="4%">0.9+</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2017/05/31.1</td>
+          <td width="20%">Domain Prefix should be ignored or rejected.</td>
+          <td width="60%">Either it can be configured in Apache that
+            JUST the Default Domain should be used - or the Auth for
+            DOMPrefix Users should be fixed/rejected. </td>
+          <td title="VersionPlaned" id="version" width="4%">0.10+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2018/06/05/1</td>
+          <td width="20%">Status Mail sorted summary shows always redhat
+            as dist.</td>
+          <td width="60%">The sorted summary Table (sort column is the
+            number of updates) does not know about the assigned dist,
+            redhat was printed as last value of the dist variable, so
+            the dist must be queried out the db per connection</td>
+          <td title="VersionPlaned" id="version" width="4%">0.10</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2018/06/22/1</td>
+          <td width="20%">Fix rhel selinux for ssh authorized_key</td>
+          <td width="60%">If Selinux is enabled on redhat it should be
+            configured to allow access to authorized keys file</td>
+          <td title="VersionPlaned" id="version" width="4%">0.10</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2018/06/22/2</td>
+          <td width="20%">sshguard blocks connections</td>
+          <td width="60%">SSHguard should be configured to allow always
+            connections from LSUS - or disabled, after user notification</td>
+          <td title="VersionPlaned" id="version" width="4%">0.11</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="none">none</td>
+          <td width="8%">2018/</td>
+          <td id="none" width="20%">template</td>
+          <td id="none" width="60%">template</td>
+          <td title="VersionPlaned" id="version" width="4%">0.11+</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="width: 100%;" cellpadding="4" border="1">
+      <tbody>
+        <tr>
+          <th colspan="6" style="color: white;" bgcolor="green">Features</th>
+        </tr>
+        <tr>
+          <th title="Status" width="7%">Stat</th>
+          <th title="UID $date.number" width="11%"><nobr>&nbsp;Date.No&nbsp;</nobr></th>
+          <th title="Short Name" width="20%">Name</th>
+          <th title="Detailed Description" width="60%">Description</th>
+          <th title="VersionPlaned" id="version" width="4%">Planned</th>
+          <th title="Priority" width="5%">Prio</th>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="finished">finished</td>
+          <td width="8%">2015/07/29.1</td>
+          <td width="20%">Create this.</td>
+          <td width="60%">Create this TODO table, to plan and organize
+            the bugs, wishes and changes</td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/07/29.2</td>
+          <td width="20%">create prod-server<br>
+            <br>
+            <b><font color="#009900">linux-updateserver.my.lan.local</font></b></td>
+          <td width="60%">[X] done: based on Ubuntu Server 14.04.2 [LTS]
+            template, <br>
+            [X] done: with LA(MP), <br>
+            [X] done: https:// SSL enabled Apache, <br>
+            [X] Hostname linux-updateserver - <br>
+            <u>[-] <b><font color="#6600cc">dns alias
+                  linux-update-server lsus</font></b></u> &lt; <br>
+            [X] AD - User-Authentifizierung<br>
+            [X] <font color="#cc0000"><b>${lsusupdateuser}</b></font>
+            als SUDO UpdateSystem-User<br>
+            [X] create ssh-key for user <b><font color="#cc0000">${lsusupdateuser}</font></b>?
+          </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/07/29.3</td>
+          <td width="20%">Sourcen umziehen auf <br>
+            <br>
+            <b><font color="#009900">linux-updateserver.my.lan.local</font></b><br>
+            <br>
+          </td>
+          <td width="60%">* inclusive .git - Ordner und nfs Export des <font
+              color="#009900"><b>lsus</b></font>&nbsp;<b>&nbsp;</b>
+            Projects, damit das auf&nbsp;&nbsp; <b>dev-host.local </b>gemouted
+            und mit Eclipse editiert werden kann.<br>
+            [X] done - aber nicht mit nfs export sondern mit <a
+              href="https://wiki.ubuntuusers.de/FUSE/sshfs">https://wiki.ubuntuusers.de/FUSE/<b>sshfs</b></a>
+            :-)<br>
+            <small><u><font color="#ff6600"><b>pancake</b></font>@</u></small><small><u><font
+                  color="#00cccc"><b>dev-host.local</b></font>:~/<font
+                  color="#993399"><b>my_proj</b></font>/<font
+                  color="#ff0000"><b>openLSUS</b></font>$ <br>
+                <br>
+              </u></small>
+            <pre><small>   sshfs </small><small><font color="#cc0000"><b>${lsusupdateuser}</b></font>@</small><b><font color="#009900">linux-updateserver.my.lan.local</font></b><small>:/home/</small><small><small><font color="#cc0000"><b>${lsusupdateuser}</b></font></small>/</small><small><small><u><font color="#993399"><b>my_proj</b></font></u></small>/</small><small><small><u><font color="#ff0000"><b>OpenLSUS</b></font></u></small>/</small><small><font color="#009900"><b>lsus</b></font> </small><small><font color="#009900"><b>lsus</b></font> -o idmap=user -o uid=$(id -u) -o gid=$(id -g) </small></pre>
+            <pre>ls -la /home/<small><u><font color="#ff6600"><b>pancake</b></font></u></small>/<small><u><font color="#993399"><b>my_proj</b></font></u></small>/<small><small><u><font color="#ff0000"><b>OpenLSUS</b></font></u></small></small>/<small><font color="#009900"><b>lsus</b></font></small>
+insgesamt 60
+drwxr-xr-x  1 <small><u><font color="#ff6600">pancake</font></u></small> <small><u><font color="#ff6600">pancake</font></u></small> 4096 Jul 30 12:37 .
+drwxr-xr-x 26 <small><u><font color="#ff6600">pancake</font></u></small> users   4096 Jul 30 13:11 ..
+drwxr-xr-x  1 <font size="+1"><b><u><font color="#ff6600">pancake</font></u></b><b> <u><font color="#ff6600">pancake</font></u></b></font> 4096 Jul 27 14:12 bin<br>.....<br>.....<br></pre>
+          </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="finished">finished</td>
+          <td width="8%">2015/07/29.4</td>
+          <td width="20%">SSH-Key für <font color="#cc0000"><b>${lsusupdateuser}
+
+              </b></font>bereitstellen</td>
+          <td width="60%">* Dazu den 4096 Bit <b>Public Key</b> unter <br>
+            i.e.: https://<b><font color="#009900">linux-updateserver.my.lan.local</font></b>/.<font
+              color="#009900"><b>lsus</b></font>../<font color="#cc0000"><b>${lsusupdateuser}</b></font>.pub.key.txt
+
+            bereitstellen<br>
+            <br>
+            <a
+href="https://otmuclsus01.opentext.net/u7n/ssh/svtaskschedule@otmuclsus01.64bit.rsa.key">https://<b><font
+                  color="#009900">linux-updateserver.my.lan.local</font></b>/<font
+                color="#009900"><b>lsus</b></font>/ssh/<font
+                color="#cc0000"><b>${lsusupdateuser}</b></font>@<b><font
+                  color="#009900">linux-updateserver</font></b>.<b>rsa.pub.key.txt<br>
+                <br>
+              </b></a> </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/07/29.5</td>
+          <td width="20%">register.py erstellen</td>
+          <td width="60%">* Als Formular und! NonInteraktive mit wget
+            http://<u><b><font color="#6600cc">lsus</font></b></u>.<b><font
+                color="#009900">my.lan.local</font></b>/<a
+href="https://otmuclsus01.opentext.net/u7n/ssh/svtaskschedule@otmuclsus01.64bit.rsa.key"><font
+                color="#009900"><b>lsus</b></font></a>/register?username=updateuser&amp;hostname=$hostname<br>
+            --&gt; Check if pingable AND DO&nbsp; <b>ssh $user@$Host
+              uname</b> -a&nbsp;&nbsp;&nbsp; &amp;&amp;&nbsp; (AND ALSO)
+            <b>ssh $user@$Host hostname</b> </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1+</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2015/07/29.6</td>
+          <td width="20%">l10n</td>
+          <td width="60%">Enable translation support</td>
+          <td title="VersionPlaned" id="version" width="4%">0.3+</td>
+          <td id="low" width="5%">low</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/09/08/1</td>
+          <td width="20%">central version number</td>
+          <td width="60%">create a central version number py module -
+            with easy increment possibility like qsfm ;-)</td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/09/08/2</td>
+          <td width="20%">Detect Platform</td>
+          <td width="60%">1.) Detect platform and depended&nbsp; on this
+            detected one, <br>
+            2.) choose the the right update tool i.e. "apt-get" </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/10/09/1</td>
+          <td width="20%">Test Sudo</td>
+          <td width="60%">At the End of the registration process do <b>a
+              test sudo</b>, for the right sudo settings (NOPASS) of the
+            given user. </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="work">work</td>
+          <td width="8%">2015/10/09/2</td>
+          <td width="20%">Check Ping</td>
+          <td width="60%">Before any Automatic or Manual Check, Update
+            or Upgrade do a test [X]<s> ping</s> <b>and [_] ssh</b>, to
+            prevent application hangs. </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="low" width="5%">low</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/10/09/3</td>
+          <td width="20%">Build Buttons</td>
+          <td width="60%">Build Buttons instead of "&lt;a hrefs&gt;"
+            with <b>javascript confirmation</b> before check, update
+            and upgrade. </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/10/09/4</td>
+          <td width="20%">Log All Manual Steps</td>
+          <td width="60%">All manual <u><b>checks</b></u>, <s>update
+              and upgrades</s> <u>should logged</u>. Also the Status <s>Change
+
+              of AutoUpdate and Active</s> (enabled) </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/10/09/5</td>
+          <td width="20%">Complete CronJob</td>
+          <td width="60%">*) <s>If Manual: Check Amount of Updates and
+              if this exceeds */50th steps, escalate!<br>
+              *) If Manual: Check if time between now() and the last
+              update exceeds */30th (monthly) steps and escalate!<br>
+              *) Send Check Mail.</s> - See <b>2015/10/21/2</b></td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/10/09/6</td>
+          <td width="20%">Edit Mail Recipient</td>
+          <td width="60%">The Mail Recipient should be editable - and of
+            course visible.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/10/21/1</td>
+          <td width="20%">use _one_ packages-table</td>
+          <td width="60%"> Instead of usage of one package table for
+            each system, use one for all with a primary index <br>
+            (<b>connection+package</b>)</td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%"><b>2015/10/21/2</b></td>
+          <td width="20%">send per user mail</td>
+          <td width="60%"> instead of sending one email per system, send
+            just one email per user with the update status of all of its
+            assigned systems. ('digest' mail) - This prevents sending
+            spam-like emails - USE: "select distinct ...." <br>
+          </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/10/21/3</td>
+          <td width="20%">optical improvements</td>
+          <td width="60%"> Optical Improvement: [X] <small><u><font
+                  color="#ff0000"><b>openLSUS</b></font></u></small>
+            Logo / [X] Docu Link / &lt;Home&gt;-(Overview) Link to, [X]
+            Anchor and Link to last Upgrade Data /[X] Log-link</td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2015/10/23/1</td>
+          <td width="20%">Auto-Redirect to LSUS<br>
+          </td>
+          <td width="60%">With Address http://<u><b><font
+                  color="#6600cc">lsus</font></b></u>.<b><font
+                color="#009900">my.lan.local</font></b> redirect to
+            &lt;location || alias&gt; /<a
+href="https://otmuclsus01.opentext.net/u7n/ssh/svtaskschedule@otmuclsus01.64bit.rsa.key"><font
+                color="#009900"><b>lsus</b></font></a> (depending on the
+            apache config...)<br>
+          </td>
+          <td title="VersionPlaned" id="version" width="4%">0.1</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/05/23/1</td>
+          <td width="20%">database query</td>
+          <td width="60%">The most meaningful and usable database
+            queries should be easy to assemble in the query form. Work
+            in progress 85% done. Remains Experimental (drop table i.e.
+            should not be allowed)</td>
+          <td title="VersionPlaned" id="version" width="4%">0.6</td>
+          <td id="low" width="5%">low</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/05/23/2/</td>
+          <td width="20%">dump/reload (ex-/import)</td>
+          <td width="60%"> The current essential data, required to
+            rebuild the database, should be ex- and importable via CSV
+            file. The needed functionality is also required for the new
+            parallel-ssh integration and for testing and build the
+            setup-start from scratch.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.4+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/05/23/3</td>
+          <td width="20%">execute host command form</td>
+          <td width="60%">There should be a execute host command form.
+            WITH validation of inputs. Work in progress 85% done.
+            Remains Experimental. Such as <s>rm-rf /</s> or <b>mv -r /
+              /dev/null</b> should be restricted. </td>
+          <td title="VersionPlaned" id="version" width="4%">0.6</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/05/23/4</td>
+          <td width="20%">parallel-ssh integration</td>
+          <td width="60%">updates should be run in parallel with help of
+            pssh <b>done. <br>
+              except manually update of multiple selections (ID
+              2016/06/07/2)</b> (needs rework of the table)</td>
+          <td title="VersionPlaned" id="version" width="4%">0.5</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="work">work</td>
+          <td width="8%">2016/05/23/5</td>
+          <td width="20%">setup/start from scratch</td>
+          <td width="60%">setup.py init mysql connection, setup ldap,
+            users, admin group </td>
+          <td title="VersionPlaned" id="version" width="4%">0.5+</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/05/23/6</td>
+          <td width="20%">debianize --&gt; lsus.0.x.ubuntu.deb</td>
+          <td width="60%"> += <b>create my.personal.client.deb and rpm</b>
+            which registers a system</td>
+          <td title="VersionPlaned" id="version" width="4%">0.6</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2016/05/23/7</td>
+          <td width="20%">OSS GIT Repo</td>
+          <td width="60%"> [**........4% done................]<br>
+          </td>
+          <td title="VersionPlaned" id="version" width="4%">0.5+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/05/23/8</td>
+          <td width="20%">sortable columns</td>
+          <td width="60%">General Topic: Usability </td>
+          <td title="VersionPlaned" id="version" width="4%">0.8</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2016/06/07/1</td>
+          <td width="20%">Own TaskManager</td>
+          <td width="60%">consequent usage of Manager/Task (as Fork or
+            subclass) to supress possibility of process interrupt on
+            browser close or history.back()</td>
+          <td title="VersionPlaned" id="version" width="4%">0.5+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%"><b>2016/06/07/2</b></td>
+          <td width="20%">multiple selections</td>
+          <td width="60%">manually (update) action of multiple
+            selections</td>
+          <td title="VersionPlaned" id="version" width="4%">0.5+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2016/06/07/3</td>
+          <td width="20%">manual command</td>
+          <td width="60%">show / offer manually (single-host) exec a
+            command form if you are owner or ownergroup</td>
+          <td title="VersionPlaned" id="version" width="4%">0.5+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/07/07/1</td>
+          <td width="20%">Detect Dead Hosts</td>
+          <td width="60%">If a host isn't pingable for more than x
+            weeks/days this should be disabled + plus a mail should be
+            send to the owner. <b>"alter Table Hosts ADD LastPingTime
+              datetime"</b></td>
+          <td title="VersionPlaned" id="version" width="4%">0.6+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2016/07/07/2</td>
+          <td width="20%">SSO for LSUS and MySQL Server</td>
+          <td width="60%">If possible Users of the LSUS Webfrontend and
+            the Database Server should be SSO authenticated</td>
+          <td title="VersionPlaned" id="version" width="4%">0.6+</td>
+          <td id="low" width="5%">low</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/07/07/3</td>
+          <td width="20%">Default ReadOnly View</td>
+          <td width="60%">There should be an default READONLY (Manager)
+            View - For anonymous and / or "LoggedIn" users. / Should be
+            changed via Settings per User (Settings.py) see 2016/08/23/1</td>
+          <td title="VersionPlaned" id="version" width="4%">0.7</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="work">work</td>
+          <td width="8%">2016/07/07/4</td>
+          <td width="20%">Debianize-Self+Makefile</td>
+          <td width="60%">Automatize almost all, incl. creating
+            src.tar.gz, deb, Makefile + Setup.py or sh</td>
+          <td title="VersionPlaned" id="version" width="4%">0.7+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2016/08/19/1</td>
+          <td width="20%"><b>Check</b> and add <b>Diskspace</b>-Table</td>
+          <td width="60%">Add Table with Diskspace for each connection
+            and harddisk </td>
+          <td title="VersionPlaned" id="version" width="4%">0.7+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/08/19/2</td>
+          <td width="20%">Editable Buddy</td>
+          <td width="60%">The Buddy (Group) of the owner should be
+            self-editable</td>
+          <td title="VersionPlaned" id="version" width="4%">0.7</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/08/23/1</td>
+          <td width="20%">Per User Settings</td>
+          <td width="60%">There should be a new Users-Table, which holds
+            settings per user, such as prefered view mode. These
+            settings should be editable in an own setings.py - form.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.7</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2016/08/25/1</td>
+          <td width="20%">Selectable Update Time per Host<br>
+          </td>
+          <td width="60%">The Update Time should be select-able per
+            host. The default should be come from the users settings.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.7+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/08/25/2</td>
+          <td width="20%">Fancy Registration Mail</td>
+          <td width="60%">Be more verbose in the registration mail. Esp.
+            Inform about ownergroup change. And finally thanks for using
+            LSUS in that mail.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.7</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2016/08/31/1</td>
+          <td width="20%">Query Form TableList should grow</td>
+          <td width="60%">The Selection List for the Table in the query
+            Form should grow to show all table names. (at least, as far
+            their count is lower than 10 ;-) ) </td>
+          <td title="VersionPlaned" id="version" width="4%">0.8</td>
+          <td id="low" width="5%">low</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2017/11/08</td>
+          <td width="20%">Setup</td>
+          <td width="60%">To be able to run this behind a Firewall and
+            the VMs are not direct accessible a Proxy like Solution
+            should be sort out. <br>
+            This includes...
+            <ul>
+              <li>First ensure the conf files a there - and the db and
+                ldap connection can be established</li>
+              <li>setup and usage of a non-AD / local user in which
+                context the VMs are called via ssh. (Removal/<b>"Replace
+                  of the Hardwired </b><b><font color="#cc0000"><b>${lsusupdateuser}</b></font>"</b>
+                +creation of its ssh private and public key. )</li>
+              <li>AdminUsergroup should be configurable</li>
+              <li>SMTP / Mail should be configurable / can be disabled.</li>
+              <li>Username and Password of the Client's Remote LSUS User
+                should configurable or editable.</li>
+              <li>... to be continued</li>
+            </ul>
+          </td>
+          <td title="VersionPlaned" id="version" width="4%">0.10+</td>
+          <td id="low" width="5%">low</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2017/11/09</td>
+          <td width="20%">host list should be page-able </td>
+          <td width="60%">Hosts [1]-[25], [26]-[50], ... </td>
+          <td title="VersionPlaned" id="version" width="4%">0.10+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2018/06/06/1</td>
+          <td width="20%">persistent sort column</td>
+          <td width="60%">Selected Sort Column should be persistent per
+            user</td>
+          <td title="VersionPlaned" id="version" width="4%">0.10</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2018/06/15/1</td>
+          <td width="20%">create build-tar.gz.sh</td>
+          <td width="60%">Create a build.tar.gz.sh shellscrip which
+            creates a tar.gz for distribution. Excluding logs and temp
+            data but include apply.update_to_X.py</td>
+          <td title="VersionPlaned" id="version" width="4%">0.10</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2018/06/22/1</td>
+          <td width="20%">Solaris 11 support</td>
+          <td width="60%">Add (experimental) Solaris 11 support</td>
+          <td title="VersionPlaned" id="version" width="4%">0.10</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="test">test</td>
+          <td width="8%">2018/08/23/1</td>
+          <td width="20%">Show Servername in LSUS Disabled Host Mail</td>
+          <td width="60%">The Mail which is send out if LSUS detected a
+            dead host and disabled these, does not contain the lsus
+            server name, which makes it difficult to identify and find
+            and "re-start &amp; enable" the dead host.</td>
+          <td title="VersionPlaned" id="version" width="4%">0.10</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+        <tr>
+          <td id="finished" style="width: 3%;">finished</td>
+          <td width="8%">2020/01/05/1</td>
+          <td width="20%">Remove "OriginalSponsor" related internal
+            sensitive data</td>
+          <td width="60%">to be able to commit this file... - open: [X]
+            Create an ["old-internal -&gt; newOpen" - Values Table]<br>
+          </td>
+          <td title="VersionPlaned" id="version" width="4%">0.11</td>
+          <td id="highest" width="5%">highest</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="work">work</td>
+          <td width="8%">2020/01/05/2</td>
+          <td width="20%">Docker_Or_Vagrant</td>
+          <td width="60%">Create a Docker or Vagrant* File, in which the
+            Version should run and tested - AND compiled and BUILD as
+            DEB</td>
+          <td title="VersionPlaned" id="version" width="4%">0.11</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="open">open</td>
+          <td width="8%">2020/01/05/3</td>
+          <td width="20%">Integrate $THIS into GitHUB's Ticketsystem</td>
+          <td width="60%">Two types of ticket queues should be used for
+            BUGS and Features, <br>
+            <ul>
+              <li>If Ticketdata can't easy exported and converted to
+                HTML and insert in this table, then this table should be
+                replaced by the Ticketsystem.</li>
+            </ul>
+          </td>
+          <td title="VersionPlaned" id="version" width="4%">0.11</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td id="open" style="width: 3%;">open</td>
+          <td width="8%">2020/04/19/1</td>
+          <td width="20%"><b>open</b>LSUS Logo<br>
+          </td>
+          <td width="60%">create a <b>open</b>LSU<b>S</b> LOGO<br>
+          </td>
+          <!-- REMOVE COMMENT td width="20%"></td>
+        <td width="60%"></td> --> <td title="VersionPlaned"
+            id="version" width="4%">0.11</td>
+          <td id="high" width="5%">high</td>
+        </tr>
+        <tr>
+          <td style="width: 3%;" id="none">none</td>
+          <td width="8%">2016/</td>
+          <td id="none" width="20%">TEMPLATE</td>
+          <td id="none" width="60%">--copy this template first --</td>
+          <td title="VersionPlaned" id="version" width="4%">0.7+</td>
+          <td id="medium" width="5%">medium</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <a href="../debian/changelog">ChangeLog</a> <br>
+    <address>(C) marc.pahnke@gmx.de </address>
+    <br>
+    <br>
+    <p> xgettext -o setup.pot -p l10n *.sh <br>
+      msgfmt -o de/LC_MESSAGES/setup.mo de.po <br>
+      msginit --locale=de --input=setup.pot </p>
+    <p> Examples: </p>
+    <pre>if [ "`hostname`" = "rhel-server-www1" ]; then   echo "installing" &amp;&amp; sudo apt-get -y install ncftp ; else  echo "no"; fi
+</pre>
+    <p></p>
+  </body>
+</html>
