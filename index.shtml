@@ -4,33 +4,41 @@
   <title><!--#exec cmd='
 BASEDIR=`dirname ${SCRIPT_FILENAME}`
 BINDIR=bin
-$BASEDIR/$BINDIR/version.py -v
+$BASEDIR/$BINDIR/lsusversion.py -v
 '--></title>
   <meta content="">
   <style></style>
+  <script type="text/javascript" src="src/js/u7n.js"></script>
+  <script>
+    window.onload = highlight_row;
+  </script>
+  <noscript>
+    This Site works only with activated JavaScript!
+  </noscript>
 </head>
   
 
 <body>
 
 <!-- Print the HEAD -->
-<h1>
+<table width="100%" border="0">
+<tr>
+<td width="50%"><img src="res/images/vendor.logo.png" width="160px"></td>
+<td width="50%" align="right" colspan="2"><img src="res/images/product.png" height="75px"></td></tr>
+<tr><td>
+<h3><nobr>
 <!--#exec cmd='
 BASEDIR=`dirname ${SCRIPT_FILENAME}`
 BINDIR=bin
-$BASEDIR/$BINDIR/version.py -v
-'--></h1>
-    
-<table>
-  <tbody>
-    <tr>
-      <th width="80%">&nbsp;<th>
-      <th width="20%"><a href="bin/register.py">Register New...</a></th>
-    </tr>  
-  </tbody>
-</table>
+$BASEDIR/$BINDIR/lsusversion.py -v
+'--></nobr></h3>
+</td>
+<td  align="right"><a href="bin/register.frame.py" target="lsus-content-area"><nobr>Register New...</nobr></a> | <a href="bin/query.py"><nobr><s>Database Query...</s></nobr></a></td>
 
-<hr>
+</tr>
+</table>  
+
+
 
 <!--#exec cmd='
 BASEDIR=`dirname ${SCRIPT_FILENAME}`
@@ -42,7 +50,8 @@ BINDIR=bin
 
 $BASEDIR/$BINDIR/buildtable.py
 '-->
-<hr />
+
+
 
 <pre>
 <!-- <remove this and leading space>#exec cmd='
@@ -54,7 +63,7 @@ BINDIR=bin
 
 DATADIR=$BASEDIR/$DATADIRNAME
 echo $DATADIR 
-# REQUEST_URI=/~mpahnke/projects/OpenText/u7n/
+# REQUEST_URI=/lsus
 BASE_URI=`dirname ${REQUEST_URI}`
 
 DATADIRLIST=`ls $DATADIR`
