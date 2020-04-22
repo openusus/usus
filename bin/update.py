@@ -23,8 +23,7 @@ CONF='conf'
 
 # TODO: Log this action for "debug and execution control"
 # TODO: Log this action for "debug, possible rollback and execution control"
-# TODO:
-#
+
 
 def applyUpdate():
   from getConfig import getBaseDir 
