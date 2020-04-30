@@ -1,4 +1,4 @@
-#openLSUS - LinuxServer Update Services 
+# openLSUS - LinuxServer Update Services 
 ### README  
 
 With openLSUS LSUS you are able to manage cron based 
