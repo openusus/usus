@@ -49,7 +49,7 @@ click or one commandline as root.
 There are hardcoded key filenames in this packages. If you change something 
 like paths or names you have to recreate this packages. Read docu/COMPILE how.
 
-Also the user who owns the ssh-public key, per default named 'lsususer', gets 
+Also the user who owns the ssh-public key, per default named 'lsusadmin', gets 
 one encrypted password per default within the native package installation.
 To change this  password you have to re-encrypt this with the crypt tool.
 Enter the encrypted password in the prepareregister.sh and rebuild the native
