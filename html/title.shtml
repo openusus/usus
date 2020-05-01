@@ -1,0 +1,19 @@
+<html>
+<body>
+<table width="100%" border="0" padding="0" spacing="0">
+<tr>
+
+
+
+
+<th width="25%" bgcolor='<!--#exec cmd="if [ `hostname` = `hostname` ]; then   echo -n 'lightgray' ; else   echo -n 'gray'; fi" -->'><a href="http://localhost:<!--#echo var="SERVER_PORT" -->" title="linux-updateserver local " target="_parent">Linux-Updateserver Local </a></th>
+<th width="25%" bgcolor='<!--#exec cmd="if [ `hostname` = 'linux-updateserver-americas' ]; then   echo -n 'lightgray' ; else   echo -n 'gray'; fi" -->'><a href="https://linux-updateserver-americas.my.lan.local" title="Linux-Updateserver Americas" target="_parent">Linux-Updateserver Americas</th>
+<th width="25%" bgcolor='<!--#exec cmd="if [ `hostname` = 'linux-updateserver-emea' ]; then   echo -n 'lightgray' ; else   echo -n 'gray'; fi" -->'><a href="https://linux-updateserver-emea.my.lan.local" title="Linux-Updateserver Emea" target="_parent">Linux-Updateserver Emea</th>
+<th width="25%" bgcolor='<!--#exec cmd="if [ `hostname` = 'linux-updateserver-apac' ]; then   echo -n 'lightgray' ; else   echo -n 'gray'; fi" -->'><a href="https://linux-updateserver-apac.my.lan.local" title="Linux-Updateserver Apac" target="_parent">Linux-Updateserver Apac</th>
+
+
+</tr>
+</table>
+</body>
+
+</html>
