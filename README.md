@@ -56,7 +56,11 @@ Enter the encrypted password in the prepareregister.sh and rebuild the native
 packs afterward. To know how to compile the crypt tool, read the docu/COMPILE. 
 
  
- 
+Known Issues:
+ Sometimes especially in a docker enviroment, the cgi socket inside of the apache process isn't initialized properly. 
+ That causes execution erros of SSI commands.
+ In this case just restart apache. it should solve the issue. Otherwise if the error doesn't disappear send me your environment detailed as possible
+ and I'll try to reproduce and fix.    
 
 
 
