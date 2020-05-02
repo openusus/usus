@@ -26,7 +26,14 @@ ON Ubuntu run:
 
     sudo apt-get install python-mysql.connector
 
-
+* fpm
+     
+     is required for creating personalized RPM, Deb Client Packages
+     is ruby based therefore you need ruby and ruby-dev to build the latest release  
+     fpm itself comes via the ruby-gem package manager
+     
+      sudo apt-get install ruby ruby-dev gcc
+      gem install fpm 
 
 
 ##How it works in short:
