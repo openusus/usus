@@ -65,13 +65,24 @@ aKVDict = { 'HOST_OWNER': HOSTOWNER,
 personal_prep_scriptContent = getConfig.loadTemplateReplaceData( 'src/clients/opt/openlsus/sbin/prepareregister.sh', aKVDict )
 
 
+
+
 prepareshellScriptfileName = 'prepareregister_of_' + HOSTOWNER + '_for_' + LSUS_HOST + '.sh'
 
 
-personal_prep_file = file( prepareshellScriptfileName, 'w' )
-personal_prep_file.write( personal_prep_scriptContent )
+try:
+  personal_prep_file = file( prepareshellScriptfileName, 'w' )
+except:
+  sys.stderr.write("\nCould not open file for write in download\n")
+try:
+  personal_prep_file.write( personal_prep_scriptContent )
+except:
+  sys.stderr.write("\nCould not write in download\n")
+
 personal_prep_file.flush()
 personal_prep_file.close()
+
+
 
 os.chmod( prepareshellScriptfileName, stat.S_IRWXU | stat.S_IRWXG | stat.S_IXOTH |stat.S_IROTH )
 

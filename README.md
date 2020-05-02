@@ -34,7 +34,16 @@ ON Ubuntu run:
      
       sudo apt-get install ruby ruby-dev gcc
       gem install fpm 
+      
+    currently the generated packages will be written in ./download 
+    so ensure the apache process, user or group (www-data) has 
+    write permission to   ./download
+      
+      root@lsus010:/# ls -la /var/www/html/download/
+      total 60      
+     <code>drwxr**w**xr-x 1 root **www-data** 4096 Oct 30  2018 .</code>
 
+* 
 
 ##How it works in short:
  
