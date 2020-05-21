@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
+
 # Import of Entire Core Modules
 import os
 import os.path
@@ -24,7 +26,7 @@ from subprocess import Popen, PIPE, STDOUT
 from datetime import date, datetime, timedelta
 from email.MIMEText import MIMEText
 
-from pythonzenity import Entry
+#from pythonzenity import Entry
 #from xml.dom.minidom import parse, parseString, Element, Node, NamedNodeMap
 
 # Database connector
@@ -33,6 +35,9 @@ from mysql.connector import errorcode
 
 # own Modules
 import lsusversion
+
+
+
 from types import NoneType
 
 
@@ -2723,6 +2728,9 @@ def asciiremapSimpleHTML_LI( remapplist ):
 #
 ##  
 if __name__ == '__main__':
+
+    print( lsusversion.FULL_PRODUCT + "\n"  + lsusversion.getCopyright() )
+
 
     # readDataFile()
     
