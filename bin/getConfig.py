@@ -85,10 +85,10 @@ LDAP_BIND_BASEDN = 'DC=my,DC=lan,DC=local'
 LDAP_USER_NAME   = 'ldap_auth_user_name'
 LDAP_PASSWD_FILE = '/home/lsusupdateuser/.hidden.credential.t'
 
-SMTP_MAIL_FROM    = "vtsystemadministration@opentext.com"
-SMTP_MAIL_REPLYTO = "vtsystemadministration@opentext.com"
-SMTP_MAIL_SERVER = "webmail-eu.opentext.com" # a smtp server whcih allows the user below to send email w/o authentication.
-SMTP_MAIL_FROM_ADDRESS = "marc.pahnke@opentext.com" # must be able to send email via SMTP_MAIL_SERVER w/o authentication - i.e. from kind of internal address
+SMTP_MAIL_FROM    = "sender@my.lan.local"
+SMTP_MAIL_REPLYTO = "reply@my.lan.local"
+SMTP_MAIL_SERVER = "smtp.my.lan.local" # a smtp server whcih allows the user below to send email w/o authentication.
+SMTP_MAIL_FROM_ADDRESS = "marc.pahnke@gmx.de" # must be able to send email via SMTP_MAIL_SERVER w/o authentication - i.e. from kind of internal address
 
 UNKNOWN_LSUS_USER = 'Unknown_LSUS_User'
 LSUSADMIN = LSUS_ADMIN = DEBUG_EMAIL_ADDRESS = 'marc.pahnke@gmx.de'
