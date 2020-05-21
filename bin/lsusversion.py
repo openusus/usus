@@ -32,7 +32,8 @@ __V = '--v'
 _h_ = "-h"
 __help = "--help"
 
-HELP = '\nHelp for Parameters\n\t' + _V_ + ' for verbose' + '\n\t' + _N_ + ' for no linefeed' 
+HELP = '\nHelp for Parameters\n\t' + _V_ + ' for verbose' + '\n\t' + _N_ + ' for no linefeed'
+HELP +=  '\n\t' + _L_ + ' COPYRIGHT'
 HELP += '\n\t' + __V + ' filename_compliant_format_v.2' + '\n\t' + _U_ + ' pre tar apply_update_transformation_a_b_format ' 
 HELP += '\n\t' + _C_ + ' no linefeed plus client pack version' +  '\n\t-h/--help this help message' 
 
