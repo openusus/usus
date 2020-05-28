@@ -1,0 +1,36 @@
+<html>
+<head>
+
+</head>
+<body>
+${MESSAGE}<br>
+Enter your query in the input field below.<br>
+Notice that all Queries will be logged.<br>
+<b>Notice: This query form is not fully complete implemented yet!</b>
+<form action="${FORMACTION}">
+Column names for <b>${TABLE}</b> <input type="text" readonly value="${DEFAULTSELECTION}" name="readonly" size="130"><!--   -->
+<div style="border: thin; border-color:green; border-style: solid; width: *%; padding: 1em;">
+  <div style="margin-left: 1em; border: thin; border-color:gray; border-style: dotted; width: 95%; padding: 1em;">
+  <nobr>${PRE}<input type="text" size="50" value="${SELECTION}" name="selection">${MID}
+  <select id="table" name="table" size="${TABLECOUNT}" onchange="document.getElementById('reload').value='true'; submit()">
+  ${OPTIONS}
+  </select>
+   &nbsp; <input type="text" size="50" value="${VALUE}" name="query">${POST}</nobr><br><br>
+  </div>
+  <input type="hidden" id='reload' value='false' name='reload'>
+  <button type="submit">Submit</button>
+  <button type="reset">Reset </button>
+  <br>
+  <br>
+  <hr>
+  
+  ${RESULT}
+  
+</div>
+</form>
+
+
+
+</body>
+
+</html>

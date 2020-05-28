@@ -1,0 +1,47 @@
+<html>
+<head>
+
+</head>
+<body>
+${MESSAGE}<br>
+Enter your query in the input field below.<br>
+Notice that all Queries will be logged.<br>
+<b>Notice: This query form is not fully complete implemented yet!</b>
+<form action="${FORMACTION}">
+
+<div style="border: thin; border-color:green; border-style: solid; width: 50%; padding: 1em;">
+  
+ 
+    <div style="margin-left: 1em; border: thin; border-color:gray; border-style: dotted; width: 95%; padding: 1em;">
+    ${PRE}<input type="text" maxlength="255" size="120" value="${VALUE}" name="acommand">${POST}
+    &nbsp; 
+    <br><br>
+      <nobr> &nbsp; Apply only to Distributions like</nobr>
+      <select name="dists" size="3" id="dists" multiple="true" >
+    
+        <option value="debian">Debian</option>      
+        <option value="suse">Suse</option>
+        <option value="redhat">RedHat</option>
+      
+      
+      
+      </select>
+      or <input type="checkbox"  value="all" name="distfamily" onchange="getElementById('dists').disabled = this.checked">All<br>
+    </div>
+  
+  <br><br>
+  &nbsp; <button type="submit">Submit</button>
+  <button type="reset">Reset </button>
+  
+  <br><br><hr>
+  
+  ${RESULT}
+
+</div>
+</form>
+
+
+
+</body>
+
+</html>

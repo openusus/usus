@@ -1,0 +1,36 @@
+
+
+<!-- ? CFGKEYLDAPHOST='ldaphost' ?> 
+CFGKEYLDAPBIND='ldapbind' 
+CFGKEYLDAPNAME='ldapname' 
+CFGKEYLDAPPWFILE='ldappass' -->
+
+<form>
+<table width="100%">
+<tr>
+<th colspan="2" align="center">Ldap-Connection</th>
+</tr>
+<tr>
+  <td align="right">Servername</td>
+  <td><input value="${ldaphost}"></td>
+</tr>
+<tr>
+  <td align="right">Bind Domain</td>
+  <td><input value="${ldapbind}"></td>
+</tr>
+<tr>
+  <td align="right">Username</td>
+  <td><input value="${ldapname}"></td>
+</tr>
+<tr>
+  <td align="right">Password</td>
+  <td><input  value="${ldappass}"></td>
+</tr>
+<tr>
+  <td align="right"><input type="reset" value="Zurücksetzen"></td>
+  <td><input type="submit" value="Absenden"></td>
+</tr>
+  
+</table>
+
+</form>

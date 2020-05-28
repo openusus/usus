@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="settings.py" target="lsus-content-area">
+<table border="0" width="100%" style="margin: 0px; padding: 0px; border-spacing: 0px;">
+  <tr align="left" bgcolor="gray"> 
+    <th>
+      <font color="white"><nobr>Settings for</nobr></font>
+    </th>
+    <th>
+      <font color="white"><nobr>${USERNAME}</nobr></font>
+    </th>
+    <th>
+      <font color="white"><nobr>last login: <i>${lastlogin}</i></nobr></font>      
+    </th>
+    <th align="right">
+      <font color="white"><nobr>Member since: <i>${firstlogin}</i></nobr></font>
+    </th>
+  </tr>
+  <tr>
+  <td colspan="4">&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td align="left">
+    <!-- document.getElementsByName("editcheckboxvalue")[0].value=document.getElementsByName("editcheckbox")[0].checked==true;  -->
+    
+        <!-- input type="button" name="test" value="hallo" onclick='document.getElementsByName("editcheckboxvalue")[0].value=document.getElementsByName("editcheckbox")[0].checked' -->
+        <input type="checkbox" name="editcheckbox" value="editmode" ${RW_VIEW_CHECKED} onchange='document.getElementsByName("editcheckboxvalue")[0].value=document.getElementsByName("editcheckbox")[0].checked; form.submit();'>
+        <input type="hidden" name="editcheckboxvalue" value="false">
+        <!-- input type="submit" value="Submit" -->
+    </td>
+    <td align="left" colspan="3">
+          <nobr> Editor Mode </nobr> 
+      
+    </td>
+  </tr>
+  
+  <tr>
+  <td colspan="4">&nbsp;</td>
+  </tr>
+  
+  <tr>
+    <td align="left"colspan="4" >
+    
+    
+        <input type="button" name="OK" value="OK" onclick='document.location="buildtable.py"'> 
+        
+        
+        
+    </td>
+    
+  </tr>
+</table>
+
+</form>
+
+</body>
+</html>

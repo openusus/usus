@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <title>${LSUS_FULL_PRODUCT} ${LSUS_VERSION}</title>
+  <meta content="">
+  <style></style>
+  <script type="text/javascript" src="../src/js/u7n.js"></script>
+  <script>
+    window.onload = highlight_row;
+  </script>
+  <noscript>
+    This Site works only with activated JavaScript!
+  </noscript>
+</head>
+ 
+<body>
+
+<!-- Print the HEAD Table -->
+<table width="100%" border="0">
+<tr>
+<td width="50%"><img src="../res/images/vendor.logo.png" width="160px"></td>
+<td width="50%" align="right" colspan="2"><img src="../res/images/product.png" height="75px"></td></tr>
+<tr><td>
+<h3><nobr>${LSUS_FULL_PRODUCT} ${LSUS_VERSION}</nobr></h3>
+</td>
+<td  align="right"><a href="register.frame.py" target="lsus-content-area"><nobr>Register New...</nobr></a> | <a href="query.py"><nobr><s>Database Query...</s></nobr></a></td>
+
+</tr>
+</table>  
+ 
+ 
+ <table border="0" width="100%">
+  <tr > 
+    <td align="left" width="*">
+      <nobr><strong>Welcome.</strong> </nobr> 
+    </td>
+    <td align="left" width="*">
+    You are logged in as: <span id="REMOTE_USER" style="color:blue; font-weight: bolder;">${USERNAME}</span><br>from ${REMOTEIP} ${IS_ADMIN}
+    </td>
+    
+    <td align="right" width="40%">
+      <form action="index.html" target="lsus-content-area">
+        <nobr><a href="settings.py" target="lsus-content-area"><input type="checkbox" name="RW_VIEW_CHECKED" value="True" ${RW_VIEW_CHECKED} disabled="disabled" onclick="document.location='settings.py'"></a><a href="settings.py" target="lsus-content-area">Edit Mode</a> | <a href="settings.py" target="lsus-content-area">Change / Settings</a> </nobr>
+      </form> 
+      <form action="buildtable.py" target="lsus-content-area">
+        <nobr><input type="text" name="MIN_ROW" size="4" id="MIN_ROW" value="${MIN_ROW}" ${MIN_ROW_DISABLED} onchange="submit()">
+              <input type="text" name="MAX_ROW" size="4" id="MAX_ROW" value="${MAX_ROW}" ${MAX_ROW_DISABLED} onchange="submit()">
+        </nobr>
+      </form>     
+      
+    </td>
+  </tr>
+</table>
