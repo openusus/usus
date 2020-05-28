@@ -121,9 +121,9 @@ COMMAND_DATA={
             "RESULT": result
             }
 if getConfig.isAdmin(  getConfig.getLoginName() ):
-  COMMAND_DATA['MESSAGE'] = "You are in Administrative Group: '<b>" + getConfig.LDAPADMINGOUP + "</b>'"
+  COMMAND_DATA['MESSAGE'] = "You are in Administrative Group: '<b>" + getConfig.LDAPADMINGROUP + "</b>'"
   print getConfig.loadTemplateReplaceData( getConfig.COMMAND_FORM_TEMPLATE, COMMAND_DATA )
 else:
-    print '<h2>You are <font color="red">not</font> in Administrative Group: '+ "'" + getConfig.LDAPADMINGOUP + "'</h2>"
+    print '<h2>You are <font color="red">not</font> in Administrative Group: '+ "'" + getConfig.LDAPADMINGROUP + "'</h2>"
   
 # printResult()
