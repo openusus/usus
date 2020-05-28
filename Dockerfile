@@ -20,7 +20,7 @@ ENV LSUSADMIN=lsusadmin
 #RUN apt-get -y install apache2 apache2-utils libapache2-mod-python mariadb-client mariadb-server\
 #    python-pip python-mysql.connector python-gtk2-dev vim mc ssh
 
-#RUN pip install python-zenity
+RUN pip install click
 
 #COPY . /var/www/html/
 
@@ -51,9 +51,12 @@ RUN groupadd wheel && \
 
 RUN echo "root:r00t" | chpasswd && echo "lsusadmin:13UZ4dm.n" | chpasswd && echo 'set password'
 
-RUN service mysql start && sleep 1 && mysql -u root -e "CREATE DATABASE lsus; GRANT ALL PRIVILEGES ON lsus.* TO 'lsusdba'@'%'IDENTIFIED BY 'lsusdba1'; GRANT ALL PRIVILEGES ON lsus.* TO 'lsusdba'@'localhost'IDENTIFIED BY 'lsusdba1'; FLUSH PRIVILEGES"
+RUN service mysql start && sleep 1 && mysql -u root -e "CREATE DATABASE lsus; GRANT ALL PRIVILEGES ON lsus.* TO 'lsusdba'@'%'IDENTIFIED BY 'lsusdba1'; GRANT ALL PRIVILEGES ON lsus.* TO 'lsusdba'@'localhost'IDENTIFIED BY 'lsusdba1'; FLUSH PRIVILEGES" && \
+mysql -uroot lsus -e "SHOW TABLES;"
 
 COPY . /var/www/html/
+
+RUN service mysql start && sleep 1 && cd /var/www/html/bin && ./setup.py connection localhost lsusdba lsusdba1 lsus y && ./setup.py database lsus
 
 # APACHE or lsusadmin +w
 # sudo chmod a+w /var/www/html/conf/lsus.cfg
@@ -61,6 +64,7 @@ COPY . /var/www/html/
 EXPOSE 80
 EXPOSE 3306
 EXPOSE 22
+
 
 CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
 

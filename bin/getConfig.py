@@ -26,7 +26,7 @@ from subprocess import Popen, PIPE, STDOUT
 from datetime import date, datetime, timedelta
 from email.MIMEText import MIMEText
 
-#from pythonzenity import Entry
+import click
 #from xml.dom.minidom import parse, parseString, Element, Node, NamedNodeMap
 
 # Database connector
@@ -1380,27 +1380,44 @@ def writeLdapConfig():
 
 
 def myInput( mytext, myentry_text  ):
+
+
   
-  
-  result = Entry( text=mytext, entry_text=myentry_text )
+  # result = Entry( text=mytext, entry_text=myentry_text )
+  # import click
+
+  result = click.prompt( mytext, type = str, default = myentry_text )
+
+  # result = Entry( text=mytext, entry_text=myentry_text )
   return result
 
 
-def getInputDatabaseConfig( config = None, host = False, user = False, passwd = False, database = False ):
+def getInputDatabaseConfig( config = None, host = '', user = '', passwd = '', database = '' ):
   
   if config == None:
     config = getEmptyDataBaseConfig()
   
   
-  if host == True:
+  if host != '':
+    config[ CFGKEYDBHOST ]  = myInput( "host $> ", host )
+  else:
     config[ CFGKEYDBHOST ]  = myInput( "host $> ", config[ CFGKEYDBHOST ] )
-  if user == True:
+
+  if user != '':
+    config[ CFGKEYDBUSER ]  = myInput( "user $> ",  user )
+  else:
     config[ CFGKEYDBUSER ]  = myInput( "user $> ",  config[ CFGKEYDBUSER ] )
-  if passwd == True:
+
+
+  if passwd != '':
+    config[ CFGKEYDBPASS ]  = myInput( "pass $> ", passwd )
+  else:
     config[ CFGKEYDBPASS ]  = myInput( "pass $> ", config[ CFGKEYDBPASS ] )
-  if database == True:
-    config[ CFGKEYDBNAME ]  = myInput( "database $> ",  config[ CFGKEYDBNAME ])
-  
+  if database != '':
+    config[ CFGKEYDBNAME ]  = myInput( "database $> ",  database )
+  else:
+    config[ CFGKEYDBNAME ]  = myInput( "database $> ",  config[ CFGKEYDBNAME ] )
+
   return config
   
   
@@ -1485,11 +1502,14 @@ def getDataDaseConfig( DEBUG=False ):
   result = getEmptyDataBaseConfig( DEBUG )
   
   config=ConfigParser.ConfigParser()
-  config.read( getConfigFilePath() )  
-  result[CFGKEYDBHOST] = config.get( CFGSECTDB, CFGKEYDBHOST )
-  result[CFGKEYDBNAME] = config.get( CFGSECTDB, CFGKEYDBNAME )
-  result[CFGKEYDBUSER] = config.get( CFGSECTDB, CFGKEYDBUSER )
-  result[CFGKEYDBPASS] = config.get( CFGSECTDB, CFGKEYDBPASS ).decode( B64 )
+  try:
+    config.read( getConfigFilePath() )
+    result[CFGKEYDBHOST] = config.get( CFGSECTDB, CFGKEYDBHOST )
+    result[CFGKEYDBNAME] = config.get( CFGSECTDB, CFGKEYDBNAME )
+    result[CFGKEYDBUSER] = config.get( CFGSECTDB, CFGKEYDBUSER )
+    result[CFGKEYDBPASS] = config.get( CFGSECTDB, CFGKEYDBPASS ).decode( B64 )
+  except:
+      print  "Error reading database config " + getConfigFilePath()
   # NON Existing Key throws an exception!
   # dummy = config.get( CFGSECTDB, CFGKEYDBUSER+'_x' ) thr
   
