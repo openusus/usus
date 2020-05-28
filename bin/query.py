@@ -30,7 +30,7 @@ sys.path.append( os.path.join( os.getcwd(), "lib" ) )
 sys.path.append( os.path.join( os.getcwd(), "..", "lib" ) )
 sys.path.append( os.path.join( os.getcwd(), "bin" ) )
 
-import HTML
+import HTML # TODO git commit
 import getConfig
 from getConfig import DISTRIBUTIONFAMILY, DEBIAN, REDHAT, SUSE, LOCKDATE, LOCKOWNER, LOCKHOST,\
   whereConnection, OWNEREMAIL
@@ -131,11 +131,11 @@ try:
             }
   
   if getConfig.isAdmin(  getConfig.getLoginName() ):
-    QUERY_DATA['MESSAGE'] = "You are in Administrative Group: '<b>" + getConfig.LDAPADMINGOUP + "</b>'"
+    QUERY_DATA['MESSAGE'] = "You are in Administrative Group: '<b>" + getConfig.LDAPADMINGROUP + "</b>'"
     print getConfig.loadTemplateReplaceData( getConfig.QUERY_FORM_TEMPLATE, QUERY_DATA )
   
   else:
-    print '<h2>You are <font color="red">not</font> in Administrative Group: '+ "'" + getConfig.LDAPADMINGOUP + "'</h2>" 
+    print '<h2>You are <font color="red">not</font> in Administrative Group: '+ "'" + getConfig.LDAPADMINGROUP + "'</h2>"
     
 except:
   et, ev, tb = sys.exc_info()
