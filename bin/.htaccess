@@ -1,0 +1,9 @@
+Options +ExecCGI
+# +FollowSymLinks
+
+<Files *.py>
+  SetHandler cgi-script
+</Files>
+
+
+
