@@ -115,8 +115,26 @@ def createDBConnection( argv ):
   configExists = False
   
   Interactive = False
-  
-  config = None
+
+  host=''
+  user=''
+  passwd=''
+  schema=''
+  noninteractive=0
+
+  # print  'len: ', len(argv),  'args: ', argv
+  if len(argv) >= 1:
+    host = argv[0]
+  if len(argv) >= 2:
+    host = argv[1]
+  if len(argv) >= 3:
+    host = argv[2]
+  if len(argv) >= 4:
+      host = argv[3]
+  if len(argv) >= 5:
+    if argv[4] == 'y':
+         noninteractive=1
+  config = getConfig.getDataDaseConfig()
 
   while True: # shallIWrite == False:
     
@@ -127,14 +145,20 @@ def createDBConnection( argv ):
         
       #print "result: ", result
     if configWorks == True:
-      if askForConfigWrite() == True:
-        
+
+      if noninteractive or askForConfigWrite() == True:
+
         getConfig.writeDBConfig( config )
-        break   
+        return
+        break
         #break
-      
+
+
+
+
+
     #else:
-    config = getConfig.getInputDatabaseConfig( config, True, True, True )
+    config = getConfig.getInputDatabaseConfig( config, host, user, passwd, schema  )
     #if configWorks == True:
     #    break
        
