@@ -1,0 +1,73 @@
+version: '2'
+
+services:
+
+
+    webserver:
+        restart: always
+        build: .
+
+        ports:
+            - "8080:80"
+            - "2222:22"
+        expose:
+          - "2222"
+          - "22"
+          - "80"
+          - "8080"
+        #links:
+        #  - "db:databaseserver"
+
+        #networks:
+        #    - lsus-network
+        depends_on:
+            - "db"
+
+        command: ["/var/www/html/bin/wait-for-it.sh", "db:3306", "--", "/var/www/html/bin/run.sh", "db", "db:3306", "lsusdba", "lsusdba1", "lsus", "y" ]
+
+    db:
+            restart: always
+            #build: ./docker/MARIADB
+            image: mariadb/server:latest
+
+            environment:
+
+                # MARIADB_ROOT_PASSWORD : specify the password for the root user
+                # MARIADB_ALLOW_EMPTY_PASSWORD : allow empty password for the root user
+                MARIADB_RANDOM_ROOT_PASSWORD: 'yes' # generate a random password for the root user (output to logs)
+
+                # MARIADB_INITDB_SKIP_TZINFO : skip timezone setup
+                # MARIADB_ROOT_HOST : host for root user, defaults to '%'
+                MARIADB_DATABASE: lsus  # create a database with this name
+                MARIADB_USER:  lsusdba # create a user with this name, with all privileges on MARIADB_DATABASE if specified
+                MARIADB_PASSWORD: lsusdba1 # password for above user
+
+            ports:
+                - "33306:3306"
+
+            expose:
+               - "33306"
+
+            #links:
+            #    - "webserver"
+            volumes:
+              - "lsusdatabase:/var/lib/mysql"
+
+# Names our volume
+volumes:
+              lsusdatabase:
+            #volumes:
+            #    - ./mariadb/data:/var/lib/mysql
+            #    - ./mariadb/files/init.sql:/docker-entrypoint-initdb.d/fhem-init.sql
+            #networks:
+            #    - lsus-network
+
+
+
+
+
+
+
+#networks:
+#    lsus-network:
+#        driver: bridge
