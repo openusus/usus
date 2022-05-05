@@ -1,4 +1,21 @@
-# openLSUS - LinuxServer Update Services 
+# openUSUS - UnixServer Update Services 
+## Readme
+
+From the upcoming release 0.2 there will be a 
+new REST JSON API backend, as base for a new 
+React.js or VUE.JS frontend
+
+This re-work is still work in progress
+and wil be documented here.
+
+Meanwhile, the legacy classic LSUS missing Libs will be sent to you on demand.
+No more work will be done in that area
+
+
+--- 
+---
+# OLD LEGACY DOCU
+## openLSUS - LinuxServer Update Services 
 ### README  
 
 With openLSUS LSUS you are able to manage cron based 
@@ -32,7 +49,7 @@ ON Ubuntu run:
      is ruby based therefore you need ruby and ruby-dev to build the latest release  
      fpm itself comes via the ruby-gem package manager
      
-      sudo apt-get install ruby ruby-dev gcc
+      sudo apt-get -y install ruby ruby-dev gcc
       gem install fpm 
       
     currently the generated packages will be written in ./download 
