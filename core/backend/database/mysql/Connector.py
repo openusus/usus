@@ -13,8 +13,9 @@ import mysql.connector
 from mysql.connector import errorcode
 
 ## OUR imports
+
 from core.backend.config.default import CFGFILENAME, getConfDir, LOG, IPADDRESS, USERID, USERNAME, TIMESTAMP, ACTION, \
-    STATUS, DATA, UNKNOWN_LSUS_USER, HOSTS_TABLE
+    STATUS, DATA, UNKNOWN_LSUS_USER, HOSTS, USERS
 
 CFGKEYDBNAME = 'database'
 CFGKEYDBUSER = 'username'
@@ -246,7 +247,7 @@ def dblogObj(dbconn, anObject, aStatus=0, aData="N/A", aTimestamp=datetime.now()
 # DB.Core.Create HostsTable
 # TODO: replace static "Strings" by constants or dict{key}=value pairs
 #   to have a generic "interface"
-def createMySQLHostsTable(cn, tableName=HOSTS_TABLE):
+def createMySQLHostsTable(cn, tableName=HOSTS):
     executeMySQLQuery(cn,  # "CREATE TABLE `" + tableName + "` (`name` varchar(40) NOT NULL) Engine=InnoDB" )
                       "CREATE TABLE IF NOT EXISTS `" + tableName + "` ("
                                                                    "  `Connection` varchar(64) NOT NULL,"
@@ -299,3 +300,50 @@ def executeMySQLQuery(cn, query):
 
     #  print "r:", result.rowcount
     return result
+
+# id BIGINT NOT NULL AUTO_INCREMENT,
+# DB.Core.Create UsersTable
+# TODO: replace static "Strings" by constants or dict{key}=value pairs
+#   to have a generic "interface"
+def createMySQLUsersTable( cn, tableName = USERS ):
+  query = "CREATE TABLE IF NOT EXISTS `" + tableName + "` (" + \
+    "  `id` BIGINT NOT NULL AUTO_INCREMENT, " + \
+    "  `loginname` varchar(64) NOT NULL, " + \
+    "  `rwmode` bool, " + \
+    "  `firstlogin` datetime, "    + \
+    "  `lastlogin` datetime, "    + \
+    "  `ownergroup` varchar(60), " + \
+    "  `updatetime` datetime, " + \
+    "  `checktime` datetime, " + \
+    "  `sortcol` varchar(32), " + \
+    "  `sortdir` varchar(6), " + \
+    "  `min_row` integer unsigned null, " + \
+    "  `max_row` integer unsigned null, " + \
+    "  PRIMARY KEY (`id`), " + \
+    "  UNIQUE INDEX login (`loginname`)" + \
+    ") ENGINE=InnoDB"
+  #print "query: !!", query , "!!"  UNIQUE INDEX ticket_tn (tn),
+  return executeMySQLQuery(cn, query)
+
+
+# from core.backend.database.mysql.Connector import openMySQLConnection
+# dbconn = openMySQLConnection()
+# from core.backend.database.mysql.Connector import createMySQLLogTable
+# createMySQLLogTable( dbconn )
+# DB.Core.Create LogTable
+# TODO: replace static "Strings" by constants or dict{key}=value pairs
+#   to have a generic "interface"
+def createMySQLLogTable(cn, tableName = LOG):
+  query = "CREATE TABLE IF NOT EXISTS `" + tableName + "` (" + \
+    "  `Id` BIGINT NOT NULL AUTO_INCREMENT," + \
+    "  `Ipaddress` varchar(40) NOT NULL," + \
+    "  `Userid` BIGINT UNSIGNED," + \
+    "  `Username` varchar(32)," + \
+    "  `Timestamp` varchar(32)," + \
+    "  `Action` TEXT," +  \
+    "  `Status` INTEGER," + \
+    "  `Data` TEXT," + \
+    "  PRIMARY KEY (`Id`)" \
+    ") ENGINE=InnoDB"
+    #print "query: <", query , ">"
+  return executeMySQLQuery(cn, query)
