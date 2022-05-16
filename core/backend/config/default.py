@@ -2,12 +2,14 @@
 import os
 
 CFGDIRNAME='conf'
-HOSTS = """Hosts"""
+HOSTS = "Hosts"
+USERS = "Users"
+LOG   = "Log"
 
 CFGFILENAME='lsus.cfg'
 
 # LOG DB COLUMNS
-LOG       = 'LOG'
+
 IPADDRESS = "Ipaddress"
 USERID    = "Userid"
 USERNAME  = "Username"
@@ -15,6 +17,13 @@ TIMESTAMP = "Timestamp"
 ACTION    = "Action"
 STATUS    = "Status"
 DATA      = "Data"
+
+# USERS Table
+USER_LOGINNAME  = 'loginname'
+USER_RWMODE     = 'rwmode'
+USER_LASTLOGIN  = 'lastlogin'
+USER_FIRSTLOGIN = 'firstlogin'
+
 
 
 UNKNOWN_LSUS_USER = 'Unknown_LSUS_User'
@@ -45,4 +54,3 @@ def getConfDir():
   return os.path.realpath( os.path.join( getBaseDir(), CFGDIRNAME ) )
 
 
-HOSTS_TABLE = 'Hosts'
