@@ -38,7 +38,14 @@ if __name__ == '__main__':
 
         }
     }
+    from core.backend.api.log import Log
+    cherrypy.tree.mount(Log(), '/log', conf )
+
+    from core.backend.api.user import User
+    cherrypy.tree.mount(User(), '/user', conf )
+
     from core.backend.api.host import Host
     cherrypy.tree.mount(Host(), '/host', conf )
+
     cherrypy.config.update({'server.socket_port': 8888})
     cherrypy.quickstart(StringGeneratorWebService(), '/', conf)
