@@ -9,7 +9,7 @@ from core.backend.database.mysql.Connector import openMySQLConnection, selectDat
 # from bin.getConfig import executeQueryFetchAll
 # from bin.getConfig import getAllRegisteredHosts
 from core.backend.config.default import HOSTS
-
+from core.utils.json import DateTimeEncoder
 
 @cherrypy.expose
 class Host(object):
@@ -19,11 +19,15 @@ class Host(object):
 
         dbconn = openMySQLConnection()
 
-        Hosts = selectData( dbconn, HOSTS, 'Connection, DistributionFamily, Hostname, KernelRelease,enabled,autoupdate,Uptime,Updates', 'order by Updates' )
+        #Hosts = selectData( dbconn, HOSTS, 'Connection, DistributionFamily, Hostname, KernelRelease,enabled,autoupdate,Uptime,Updates', 'order by Updates' )
+        Hosts = selectData( dbconn, HOSTS, '*', 'order by Updates' )
         #print (str(Hosts))
         # test = ['hallo', {'a': 1}]
         # return cherrypy.session['mystring']
-        return bytes( json.JSONEncoder().encode(Hosts), encoding='utf-8') # cherrypy.session['mystring']
+        #return bytes( json.JSONEncoder().encode(Hosts), encoding='utf-8') # cherrypy.session['mystring']
+        return bytes( json.dumps(Hosts, cls=DateTimeEncoder), encoding='utf-8') # cherrypy.session['mystring']
+
+
 
     def GET(self, name_or_id=None):
         dbconn = openMySQLConnection()
@@ -35,16 +39,18 @@ class Host(object):
         print(query, file=sys.stderr)
 
 
-        Host = selectData( dbconn, HOSTS, 'Connection, DistributionFamily, Hostname, KernelRelease,enabled,autoupdate,Uptime,Updates', query +  ' order by Updates' )
+        #Host = selectData( dbconn, HOSTS, 'Connection, DistributionFamily, Hostname, KernelRelease,enabled,autoupdate,Uptime,Updates', query +  ' order by Updates' )
+        Host = selectData( dbconn, HOSTS, '*', query +  ' order by Updates' )
 
         if isinstance(Host, list) and len(Host) > 0:
 
           Result = Host
-          return bytes(json.JSONEncoder().encode({'Host': Result, 'Connections': len(Result)}), encoding='utf-8')
+          # json.dumps(Hosts, cls=DateTimeEncoder)
+          return bytes(json.dumps({'Host': Result, 'Connections': len(Result)}, cls=DateTimeEncoder ), encoding='utf-8')
         else:
 
           Result = {'error': 'No Host found', 'Searchedfor': name_or_id}
-          return bytes(json.JSONEncoder().encode(Result), encoding='utf-8')
+          return bytes(json.dumps(Result, cls=DateTimeEncoder), encoding='utf-8')
 
 
 
